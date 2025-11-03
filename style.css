@@ -5,9 +5,29 @@
   padding: 0;
 }
 
-/* —— body + fonts —— */
+/*
+  L'Oréal Monotype
+  ----------------
+  The official L'Oréal monotype is a licensed font. Add the font files to
+  a `fonts/` folder at the project root (e.g. `fonts/LorealMonotype.woff2`)
+  and the @font-face below will load them. If you don't have the licensed
+  font, the site will fall back to Montserrat and system fonts.
+
+  To add the font files, drop `LorealMonotype.woff2` and optionally
+  `LorealMonotype.woff` into the `fonts/` folder.
+*/
+
+@font-face {
+  font-family: 'LOreal Monotype';
+  src: url('fonts/LorealMonotype.woff2') format('woff2'),
+       url('fonts/LorealMonotype.woff') format('woff');
+  font-weight: 300 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 body {
-  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  font-family: 'LOreal Monotype', 'Montserrat', Arial, Helvetica, sans-serif;
   color: #333;
   display: flex;
   justify-content: center;
@@ -30,6 +50,22 @@ body {
   margin-bottom: 10px;
 }
 
+/* —— L'Oréal brand colors —— */
+:root {
+  --loreal-black: #000000;
+  --loreal-gold: #C6A965; /* accent - use sparingly */
+  --loreal-gray: #666666;
+  --bg: #FFFFFF;
+}
+
+.brand-logo {
+  width: 180px;
+  max-width: 60%;
+  height: auto;
+  display: block;
+  margin: 0 auto 8px;
+}
+
 /* chat window */
 .chatbox {
   margin: 40px 0;
@@ -37,27 +73,55 @@ body {
 
 .chat-window {
   height: 360px;
-  border: 1px solid #000;
+  border: 1px solid var(--loreal-black);
   padding: 20px;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.5;
   overflow-y: auto;
-  background: #fafafa;
+  background: var(--bg);
   white-space: pre-line;
 }
 
 /* messages */
-.msg {
-  margin-bottom: 14px;
-  line-height: 1.5;
+.message-row {
+  display: flex;
+  margin-bottom: 12px;
 }
 
-.msg.user {
-  color: #000;
+.message-row.user {
+  justify-content: flex-end;
 }
 
-.msg.ai {
-  color: #666666;
+.message-row.assistant {
+  justify-content: flex-start;
+}
+
+.bubble {
+  max-width: 78%;
+  padding: 12px 14px;
+  border-radius: 18px;
+  font-size: 15px;
+  line-height: 1.4;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.04);
+}
+
+.bubble.user {
+  background: var(--loreal-black);
+  color: #fff;
+  border-bottom-right-radius: 4px;
+}
+
+.bubble.assistant {
+  background: #F7F5EE; /* soft off-white for cards */
+  color: var(--loreal-black);
+  border-bottom-left-radius: 4px;
+  border: 1px solid rgba(0,0,0,0.06);
+}
+
+.chat-meta {
+  font-size: 13px;
+  color: var(--loreal-gray);
+  margin: 6px 0 10px;
 }
 
 /* input row */
@@ -81,8 +145,8 @@ body {
 
 .chat-form button {
   font-size: 18px;
-  background: #000;
-  color: #fff;
+  background: var(--loreal-black);
+  color: var(--bg);
   border: none;
   padding: 12px;
   width: 48px;
@@ -99,7 +163,8 @@ body {
 }
 
 .chat-form button:hover {
-  background: #666666;
+  background: var(--loreal-gold);
+  color: var(--loreal-black);
 }
 
 .chat-form button:focus {
@@ -139,5 +204,5 @@ body {
 }
 
 .site-footer a:hover {
-  color: #666666;
+  color: var(--loreal-gold);
 }

@@ -19,12 +19,14 @@
     <div class="page-wrapper">
       <!------- Header / Branding ------->
       <header class="site-header">
-        <h1 class="site-title">Smart Product Advisor</h1>
+        <img src="img/loreal-logo.png" alt="L'Oréal logo" class="brand-logo" />
+        <h1 class="site-title">Smart Advisor</h1>
       </header>
 
       <!------- Chat Area ------->
       <main>
         <section class="chatbox">
+          <div id="lastQuestion" class="chat-meta" aria-live="polite"></div>
           <div id="chatWindow" class="chat-window">
             <!-- messages will be appended here via JS -->
           </div>
@@ -59,8 +61,7 @@
       </footer>
     </div>
 
-    <!-- secrets.js can be removed when using Cloudflare Workers for API requests -->
-    <script src="secrets.js"></script>
+    <!-- Use a Cloudflare Worker to proxy requests to OpenAI (do NOT expose your API key in the frontend) -->
     <script src="script.js"></script>
   </body>
 </html>
